@@ -1,0 +1,32 @@
+name: Code Quality
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**.[ch]'
+      - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CMAKE_BUILD_TYPE: RelWithDebInfo
+    steps:
+    - uses: actions/checkout@v4
+    - uses: hustcer/setup-nu@v3
+      with:
+        version: '0.97.1'
+    - name: Check Format
+      shell: nu {0}
+      run: clang-format --dry-run ...(glob 'src/*.c')
+    - name: Configure CMake
+      run: cmake --preset=default .
+    - name: Check Lints
+      shell: nu {0}
+      run: clang-tidy --quiet -p .build ...(glob 'src/*.c')
+    - name: Build with Make
+      run: cmake --build .build
