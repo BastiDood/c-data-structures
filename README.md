@@ -12,7 +12,7 @@ This project uses the [CMake] (v3.30+) build system generator for cross-platform
 [CMake]: https://cmake.org/
 [Ninja]: https://ninja-build.org/
 
-The [Just] (v1.35+) task runner for convenience with [Nushell] (v0.97+) as the cross-platform shell. However, it is totally possible to run the commands yourself. Consult the [`justfile`] for more details on the raw commands being executed.
+For convenience and widest compatibility, we use the [Just] (v1.35+) task runner with the cross-platform [Nushell] (v0.97+) shell to run common commands. However, it is totally possible to run the raw commands yourself. Consult the [`justfile`] for more details.
 
 [Just]: https://just.systems/
 [Nushell]: https://www.nushell.sh/
