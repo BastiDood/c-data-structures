@@ -19,10 +19,10 @@ The [Just] (v1.35+) task runner for convenience. However, it is totally possible
 
 ```bash
 # Generate the build system configurations in `.build/`
-just config
+just
 
 # Build all targets in debug mode
-just
+just build
 
 # Build all targets in release mode (if supported by the generator)
 just build Release
