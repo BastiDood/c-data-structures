@@ -7,14 +7,15 @@ This repository contains reference implementations for various basic data struct
 
 ## Running the Code
 
-This project uses the [CMake] (v3.30+) build system generator for cross-platform builds. I personally prefer the multi-configuration [Ninja] build system, but feel free to use your system's default (e.g., Microsoft Visual Studio Compiler, Xcode, and Make).
+This project uses the [CMake] (v3.30+) build system generator for cross-platform builds. I personally prefer the multi-configuration [Ninja] (v1.12+) build system, but feel free to use your system's default (e.g., Microsoft Visual Studio Compiler, Xcode, and Make).
 
 [CMake]: https://cmake.org/
 [Ninja]: https://ninja-build.org/
 
-The [Just] (v1.35+) task runner for convenience. However, it is totally possible to run the commands yourself. Consult the [`justfile`] for more details on the raw commands being executed.
+The [Just] (v1.35+) task runner for convenience with [Nushell] (v0.97+) as the cross-platform shell. However, it is totally possible to run the commands yourself. Consult the [`justfile`] for more details on the raw commands being executed.
 
 [Just]: https://just.systems/
+[Nushell]: https://www.nushell.sh/
 [`justfile`]: ./justfile
 
 ```bash
