@@ -1,0 +1,10 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": { "major": 3, "minor": 30 },
+    "configurePresets": [{
+        "name": "default",
+        "displayName": "Default",
+        "binaryDir": "${sourceDir}/.build",
+        "cacheVariables": { "CMAKE_EXPORT_COMPILE_COMMANDS": true }
+    }]
+}
