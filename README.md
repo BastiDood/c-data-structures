@@ -1,0 +1,26 @@
+# Basic Data Structures in C
+
+This repository contains reference implementations for various basic data structures in C. The public interfaces are intentionally incomplete to encourage the reader to fill in the blanks and implement their own extensions.
+
+## Running the Code
+
+This project uses the [CMake] (v3.30+) build system generator for cross-platform builds. the [Just] (v1.35+) task runner for convenience. However, it is totally possible to run the commands yourself. Consult the [`justfile`] for more details on the raw commands being executed.
+
+[CMake]: https://cmake.org/
+[Just]: https://just.systems/
+[`justfile`]: ./justfile
+
+```bash
+# Generate the build system configurations in `.build/`
+just config
+
+# Build all targets in debug mode
+just
+
+# Build all targets in release mode (if supported by the generator)
+just build Release
+
+# Convenience aliases for running the build binaries
+just run singly
+just run doubly
+```
