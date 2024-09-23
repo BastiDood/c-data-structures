@@ -201,7 +201,7 @@ struct List list_split_nth(struct List * const self, const size_t n) {
     struct Node * const node = node_get_nth_in_chain(self->head, n);
     struct List list = list_create();
     if (node != NULL) {
-        list.head = node->next;
+        list_push_front_node(&list, node->next);
         node->next = NULL; // break connection
     }
     return list;
