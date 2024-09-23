@@ -1,0 +1,12 @@
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: 'AllIfsAndElse'
+BasedOnStyle: 'LLVM'
+BreakBeforeTernaryOperators: true
+ColumnLimit: 120
+DeriveLineEnding: false
+IndentCaseLabels: true
+IndentWidth: 4
+PointerAlignment: 'Middle'
+SpacesInContainerLiterals: true
+TabWidth: 4
+UseCRLF: false
