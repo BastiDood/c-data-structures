@@ -20,7 +20,7 @@ The [Just] (v1.35+) task runner for convenience with [Nushell] (v0.97+) as the c
 
 ```bash
 # Generate the build system configurations in `.build/`
-just
+just config
 
 # Build all targets in debug mode
 just build
@@ -31,4 +31,16 @@ just build Release
 # Convenience aliases for running the built binaries
 just run singly
 just run doubly
+```
+
+## Linting the Codebase
+
+```bash
+# Run Clang Format as the formatter.
+just fmt     # check
+just fix-fmt # fix
+
+# Run Clang Tidy as the linter.
+just lint     # check
+just fix-lint # fix
 ```
