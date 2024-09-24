@@ -19,16 +19,16 @@ test config='Debug': (build config)
 
 # Lint the code with Clang Tidy.
 lint:
-    clang-tidy --quiet -p '{{ BUILD_DIR }}' ...(glob '{{ SOURCE_FILES_GLOB }}')
+    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-tidy --quiet -p '{{ BUILD_DIR }}' $path } | ignore
 
 # Apply lint fix suggestions from Clang Tidy.
 fix-lint:
-    clang-tidy --quiet --fix -p '{{ BUILD_DIR }}' ...(glob '{{ SOURCE_FILES_GLOB }}')
+    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-tidy --quiet --fix -p '{{ BUILD_DIR }}' $path } | ignore
 
 # Check code formatting with Clang Format.
 fmt:
-    clang-format --dry-run ...(glob '{{ SOURCE_FILES_GLOB }}')
+    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-format --dry-run $path } | ignore
 
 # Fix code formatting with Clang Format.
 fix-fmt:
-    clang-format -i ...(glob '{{ SOURCE_FILES_GLOB }}')
+    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-format -i $path } | ignore
