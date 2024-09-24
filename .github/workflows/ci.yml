@@ -6,6 +6,8 @@ on:
     branches:
       - main
     paths:
+      - '.clang-format'
+      - '.clang-tidy'
       - '.github/workflows/ci.yml'
       - 'src/**.[ch]'
       - 'CMakeLists.txt'
