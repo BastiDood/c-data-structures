@@ -2,6 +2,7 @@
 
 This repository contains reference implementations for various basic data structures in C. The public interfaces are intentionally incomplete to encourage the reader to fill in the blanks and implement their own extensions.
 
+* [Slice](./src/slice/)
 * [Singly-Linked List](./src/singly-linked-list/)
 * [Doubly-Linked List](./src/doubly-linked-list/)
 
