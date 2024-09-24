@@ -1,5 +1,5 @@
 Checks:
-  - 'bugprone*'
+  - 'bugprone-*'
   - 'misc-*'
   - 'performance-*'
   - 'readability-*'

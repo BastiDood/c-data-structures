@@ -25,11 +25,13 @@ jobs:
         version: '0.97.1'
     - name: Check Format
       shell: nu {0}
-      run: clang-format --dry-run ...(glob 'src/*.c')
+      run: clang-format --dry-run ...(glob 'src/**/*.{c,h}')
     - name: Configure CMake
       run: cmake --preset=default .
     - name: Check Lints
       shell: nu {0}
-      run: clang-tidy --quiet -p .build ...(glob 'src/*.c')
+      run: clang-tidy --quiet -p .build ...(glob 'src/**/*.{c,h}')
     - name: Build with Make
       run: cmake --build .build
+    - name: Run Unit Tests
+      run: ctest --preset=default

@@ -1,6 +1,8 @@
 #ifndef SINGLY_LINKED_NODE_H
 #define SINGLY_LINKED_NODE_H
 
+#include <stddef.h>
+
 // A singly-linked node (possibly part of a chain).
 struct Node {
     int data; // can be any data type you want
