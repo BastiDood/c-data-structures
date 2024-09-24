@@ -1,2 +1,2 @@
-add_executable(singly singly.c)
-add_executable(doubly doubly.c)
+add_subdirectory(singly-linked-list)
+add_subdirectory(doubly-linked-list)

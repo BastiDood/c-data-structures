@@ -2,8 +2,8 @@
 
 This repository contains reference implementations for various basic data structures in C. The public interfaces are intentionally incomplete to encourage the reader to fill in the blanks and implement their own extensions.
 
-* [Singly-Linked List](./src/singly.c)
-* [Doubly-Linked List](./src/doubly.c)
+* [Singly-Linked List](./src/singly-linked-list/)
+* [Doubly-Linked List](./src/doubly-linked-list/)
 
 ## Running the Code
 
@@ -28,9 +28,8 @@ just build
 # Build all targets in release mode (if supported by the generator)
 just build Release
 
-# Convenience aliases for running the built binaries
-just run singly
-just run doubly
+# Run all unit tests
+just test
 ```
 
 ## Linting the Codebase

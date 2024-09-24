@@ -15,4 +15,6 @@ set(CMAKE_C_STANDARD 17)
 set(CMAKE_EXECUTABLE_SUFFIX .exe)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(CTest)
+add_subdirectory(deps)
 add_subdirectory(src)
