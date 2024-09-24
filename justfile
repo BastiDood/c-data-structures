@@ -19,11 +19,11 @@ test config='Debug': (build config)
 
 # Lint the code with Clang Tidy.
 lint:
-    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-tidy --quiet -p '{{ BUILD_DIR }}' $path } | ignore
+    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| { file: ($path | path relative-to (pwd)), output: (clang-tidy --quiet -p '{{ BUILD_DIR }}' $path e>| lines) } } | where ($it.output | is-not-empty) | update output { |row| $row.output | str join "\n" }
 
 # Apply lint fix suggestions from Clang Tidy.
 fix-lint:
-    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-tidy --quiet --fix -p '{{ BUILD_DIR }}' $path } | ignore
+    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| { file: ($path | path relative-to (pwd)), output: (clang-tidy --quiet --fix -p '{{ BUILD_DIR }}' $path e>| lines) } } | where ($it.output | is-not-empty) | update output { |row| $row.output | str join "\n" }
 
 # Check code formatting with Clang Format.
 fmt:
