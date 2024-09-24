@@ -13,7 +13,7 @@ void should_skip_within_length(void) {
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
     enum { SKIP = 2 };
-    struct Slice slice = slice_skip_n(slice_create(bytes, LEN), SKIP);
+    struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), SKIP);
 
     uint8_t result[LEN - SKIP] = {2, 3};
     TEST_ASSERT_EQUAL_UINT8_ARRAY(result, slice.buf, slice.len);
@@ -22,7 +22,7 @@ void should_skip_within_length(void) {
 void should_skip_none(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
-    struct Slice slice = slice_skip_n(slice_create(bytes, LEN), 0);
+    struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), 0);
     TEST_ASSERT_EQUAL_PTR(bytes, slice.buf);
     TEST_ASSERT_EQUAL(LEN, slice.len);
 }
@@ -30,21 +30,21 @@ void should_skip_none(void) {
 void should_skip_at_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
-    struct Slice slice = slice_skip_n(slice_create(bytes, LEN), LEN);
+    struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), LEN);
     TEST_ASSERT_EQUAL(0, slice.len);
 }
 
 void should_skip_beyond_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
-    struct Slice slice = slice_skip_n(slice_create(bytes, LEN), LEN + 1);
+    struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), LEN + 1);
     TEST_ASSERT_EQUAL(0, slice.len);
 }
 
 void should_take_none(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
-    struct Slice slice = slice_take_n(slice_create(bytes, LEN), 0);
+    struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), 0);
     TEST_ASSERT_EQUAL(0, slice.len);
 }
 
@@ -53,7 +53,7 @@ void should_take_within_length(void) {
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
     enum { TAKE = 2 };
-    struct Slice slice = slice_take_n(slice_create(bytes, LEN), TAKE);
+    struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), TAKE);
 
     uint8_t result[LEN - TAKE] = {0, 1};
     TEST_ASSERT_EQUAL_UINT8_ARRAY(result, slice.buf, slice.len);
@@ -62,7 +62,7 @@ void should_take_within_length(void) {
 void should_take_at_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
-    struct Slice slice = slice_take_n(slice_create(bytes, LEN), LEN);
+    struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), LEN);
     TEST_ASSERT_EQUAL_PTR(bytes, slice.buf);
     TEST_ASSERT_EQUAL(LEN, slice.len);
 }
@@ -70,7 +70,7 @@ void should_take_at_length(void) {
 void should_take_beyond_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
-    struct Slice slice = slice_take_n(slice_create(bytes, LEN), LEN + 1);
+    struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), LEN + 1);
     TEST_ASSERT_EQUAL_PTR(bytes, slice.buf);
     TEST_ASSERT_EQUAL(LEN, slice.len);
 }
@@ -79,7 +79,7 @@ void should_reverse(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_reverse(slice);
 
     uint8_t result[LEN] = {3, 2, 1, 0};
@@ -90,7 +90,7 @@ void should_rotate_left_within_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_rotate_left(slice, 2);
 
     uint8_t result[LEN] = {2, 3, 0, 1};
@@ -101,7 +101,7 @@ void should_rotate_left_at_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_rotate_left(slice, LEN);
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(bytes, bytes, LEN);
@@ -111,7 +111,7 @@ void should_rotate_left_beyond_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_rotate_left(slice, LEN + 1);
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(bytes, bytes, LEN);
@@ -121,7 +121,7 @@ void should_rotate_right_within_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_rotate_right(slice, 2);
 
     uint8_t result[LEN] = {2, 3, 0, 1};
@@ -132,7 +132,7 @@ void should_rotate_right_at_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_rotate_right(slice, LEN);
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(bytes, bytes, LEN);
@@ -142,7 +142,7 @@ void should_rotate_right_beyond_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
 
-    struct Slice slice = slice_create(bytes, LEN);
+    struct Slice slice = slice_create_valid(bytes, LEN);
     slice_rotate_right(slice, LEN + 1);
 
     uint8_t result[LEN] = {3, 0, 1, 2};

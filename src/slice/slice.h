@@ -11,13 +11,23 @@ struct Slice {
     size_t len;
 };
 
-struct Slice slice_create(uint8_t * buf, size_t len);
+// Creates a valid slice into `buf`.
+struct Slice slice_create_valid(uint8_t * buf, size_t len);
+
+// Creates an empty slice with `buf` set to `NULL`.
+struct Slice slice_create_empty(void);
 
 // Skips the first `n` elements in the slice.
 struct Slice slice_skip_n(struct Slice self, size_t n);
 
 // Takes up to the first `n` elements in the slice.
 struct Slice slice_take_n(struct Slice self, size_t n);
+
+uint8_t slice_get_first(struct Slice self);
+uint8_t slice_get_last(struct Slice self);
+
+// Pops the last element off of this view in-place.
+uint8_t slice_pop(struct Slice * self);
 
 void slice_reverse(struct Slice self);
 void slice_rotate_left(struct Slice self, size_t n);
