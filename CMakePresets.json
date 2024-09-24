@@ -10,6 +10,7 @@
     "testPresets": [{
         "name": "default",
         "displayName": "Default",
-        "configurePreset": "default"
+        "configurePreset": "default",
+        "output": { "outputOnFailure": true }
     }]
 }
