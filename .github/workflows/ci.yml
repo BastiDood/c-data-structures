@@ -10,8 +10,8 @@ on:
       - '.clang-tidy'
       - '.github/workflows/ci.yml'
       - 'src/**.[ch]'
-      - 'CMakeLists.txt'
       - 'CMakePresets.json'
+      - '**/CMakeLists.txt'
 
 jobs:
   build:
