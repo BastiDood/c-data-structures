@@ -1,10 +1,11 @@
-Checks:
-  - 'bugprone-*'
-  - 'misc-*'
-  - 'performance-*'
-  - 'readability-*'
-  - '-bugprone-easily-swappable-parameters'
-  - '-readability-braces-around-statements'
-  - '-readability-isolate-declaration'
-  - '-readability-magic-numbers'
-  - '-readability-identifier-length'
+# TODO: Use native YAML arrays when built-in Clang tools are updated.
+Checks: |
+  bugprone-*,
+  misc-*,
+  performance-*,
+  readability-*,
+  -bugprone-easily-swappable-parameters,
+  -readability-braces-around-statements,
+  -readability-isolate-declaration,
+  -readability-magic-numbers,
+  -readability-identifier-length,
