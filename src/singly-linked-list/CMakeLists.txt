@@ -1,5 +1,5 @@
 add_library(${PROJECT_NAME}_SinglyLinkedList STATIC node.c list.c)
-target_include_directories(${PROJECT_NAME}_SinglyLinkedList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME}_SinglyLinkedList PUBLIC .)
 
 if(BUILD_TESTING)
     add_executable(${PROJECT_NAME}_SinglyLinkedList_Test test.c)

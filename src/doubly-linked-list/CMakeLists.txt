@@ -1,5 +1,5 @@
 add_library(${PROJECT_NAME}_DoublyLinkedList STATIC node.c list.c)
-target_include_directories(${PROJECT_NAME}_DoublyLinkedList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME}_DoublyLinkedList PUBLIC .)
 
 if(BUILD_TESTING)
     add_executable(${PROJECT_NAME}_DoublyLinkedList_Test test.c)
