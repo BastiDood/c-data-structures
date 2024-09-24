@@ -19,16 +19,16 @@ test config='Debug': (build config)
 
 # Lint the code with Clang Tidy.
 lint:
-    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| { file: ($path | path relative-to (pwd)), output: (clang-tidy --quiet -p '{{ BUILD_DIR }}' $path e>| lines) } } | where ($it.output | is-not-empty) | update output { |row| $row.output | str join "\n" }
+    clang-tidy --quiet -p '{{ BUILD_DIR }}' ...(glob '{{ SOURCE_FILES_GLOB }}')
 
 # Apply lint fix suggestions from Clang Tidy.
 fix-lint:
-    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| { file: ($path | path relative-to (pwd)), output: (clang-tidy --quiet --fix -p '{{ BUILD_DIR }}' $path e>| lines) } } | where ($it.output | is-not-empty) | update output { |row| $row.output | str join "\n" }
+    clang-tidy --quiet --fix -p '{{ BUILD_DIR }}' ...(glob '{{ SOURCE_FILES_GLOB }}')
 
 # Check code formatting with Clang Format.
 fmt:
-    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-format --dry-run $path } | ignore
+    clang-format --dry-run ...(glob '{{ SOURCE_FILES_GLOB }}')
 
 # Fix code formatting with Clang Format.
 fix-fmt:
-    glob '{{ SOURCE_FILES_GLOB }}' | par-each { |path| clang-format -i $path } | ignore
+    clang-format -i ...(glob '{{ SOURCE_FILES_GLOB }}')
