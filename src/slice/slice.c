@@ -8,7 +8,9 @@ struct Slice slice_create_valid(uint8_t * const buf, const size_t len) {
     return (struct Slice){.buf = buf, .len = len};
 }
 
-struct Slice slice_create_empty(void) { return slice_create_valid(NULL, 0); }
+struct Slice slice_create_empty(void) {
+    return slice_create_valid(NULL, 0);
+}
 
 struct Slice slice_skip_n(const struct Slice self, const size_t n) {
     const size_t len = self.len < n ? 0 : self.len - n; // clamp above zero
@@ -20,7 +22,9 @@ struct Slice slice_take_n(const struct Slice self, const size_t n) {
     return (struct Slice){.buf = self.buf, .len = len};
 }
 
-uint8_t * slice_try_get(const struct Slice self, const size_t n) { return n < self.len ? self.buf + n : NULL; }
+uint8_t * slice_try_get(const struct Slice self, const size_t n) {
+    return n < self.len ? self.buf + n : NULL;
+}
 
 uint8_t slice_get_first(const struct Slice self) {
     const uint8_t * const byte = slice_try_get(self, 0);

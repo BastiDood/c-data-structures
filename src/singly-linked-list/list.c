@@ -6,7 +6,9 @@
 #include "list.h"
 #include "node.h"
 
-void list_init(struct List * const self) { self->head = NULL; }
+void list_init(struct List * const self) {
+    self->head = NULL;
+}
 
 struct List list_create(void) {
     struct List list;
@@ -34,7 +36,9 @@ void list_push_front_node(struct List * const self, struct Node * const node) {
     self->head = node;
 }
 
-void list_push_front_data(struct List * const self, const int data) { list_push_front_node(self, node_create(data)); }
+void list_push_front_data(struct List * const self, const int data) {
+    list_push_front_node(self, node_create(data));
+}
 
 struct Node * list_dequeue(struct List * const self) {
     struct Node * const node = self->head;

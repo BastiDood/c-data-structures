@@ -5,7 +5,9 @@
 #include "list.h"
 #include "node.h"
 
-void list_init(struct List * const self) { self->head = self->tail = NULL; }
+void list_init(struct List * const self) {
+    self->head = self->tail = NULL;
+}
 
 struct List list_create(void) {
     struct List list;
@@ -52,7 +54,9 @@ void list_push_back_node(struct List * const self, struct Node * const other) {
     if (self->head == NULL) self->head = other;
 }
 
-void list_push_back_data(struct List * const self, const int data) { list_push_back_node(self, node_create(data)); }
+void list_push_back_data(struct List * const self, const int data) {
+    list_push_back_node(self, node_create(data));
+}
 
 void list_push_front_node(struct List * const self, struct Node * const other) {
     if (self->head == NULL) {
@@ -65,4 +69,6 @@ void list_push_front_node(struct List * const self, struct Node * const other) {
     if (self->tail == NULL) self->tail = other;
 }
 
-void list_push_front_data(struct List * const self, const int data) { list_push_front_node(self, node_create(data)); }
+void list_push_front_data(struct List * const self, const int data) {
+    list_push_front_node(self, node_create(data));
+}

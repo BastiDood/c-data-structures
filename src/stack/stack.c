@@ -34,7 +34,9 @@ void stack_free(struct Stack * const self) {
     stack_init(self);
 }
 
-uint8_t stack_peek(struct Stack const * const self) { return slice_get_last(self->buf); }
+uint8_t stack_peek(struct Stack const * const self) {
+    return slice_get_last(self->buf);
+}
 
 void stack_push(struct Stack * const self, const uint8_t item) {
     // Ensure that the buffer has been allocated
@@ -56,4 +58,6 @@ void stack_push(struct Stack * const self, const uint8_t item) {
     self->buf.buf[self->buf.len++] = item;
 }
 
-uint8_t stack_pop(struct Stack * const self) { return slice_pop(&self->buf); }
+uint8_t stack_pop(struct Stack * const self) {
+    return slice_pop(&self->buf);
+}
