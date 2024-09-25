@@ -16,36 +16,36 @@ void should_skip_within_length(void) {
     struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), SKIP);
 
     uint8_t result[LEN - SKIP] = {2, 3};
-    TEST_ASSERT_EQUAL_UINT8_ARRAY(result, slice.buf, slice.len);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(result, slice.buffer, slice.length);
 }
 
 void should_skip_none(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
     struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), 0);
-    TEST_ASSERT_EQUAL_PTR(bytes, slice.buf);
-    TEST_ASSERT_EQUAL(LEN, slice.len);
+    TEST_ASSERT_EQUAL_PTR(bytes, slice.buffer);
+    TEST_ASSERT_EQUAL(LEN, slice.length);
 }
 
 void should_skip_at_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
     struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), LEN);
-    TEST_ASSERT_EQUAL(0, slice.len);
+    TEST_ASSERT_EQUAL(0, slice.length);
 }
 
 void should_skip_beyond_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
     struct Slice slice = slice_skip_n(slice_create_valid(bytes, LEN), LEN + 1);
-    TEST_ASSERT_EQUAL(0, slice.len);
+    TEST_ASSERT_EQUAL(0, slice.length);
 }
 
 void should_take_none(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
     struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), 0);
-    TEST_ASSERT_EQUAL(0, slice.len);
+    TEST_ASSERT_EQUAL(0, slice.length);
 }
 
 void should_take_within_length(void) {
@@ -56,23 +56,23 @@ void should_take_within_length(void) {
     struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), TAKE);
 
     uint8_t result[LEN - TAKE] = {0, 1};
-    TEST_ASSERT_EQUAL_UINT8_ARRAY(result, slice.buf, slice.len);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(result, slice.buffer, slice.length);
 }
 
 void should_take_at_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
     struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), LEN);
-    TEST_ASSERT_EQUAL_PTR(bytes, slice.buf);
-    TEST_ASSERT_EQUAL(LEN, slice.len);
+    TEST_ASSERT_EQUAL_PTR(bytes, slice.buffer);
+    TEST_ASSERT_EQUAL(LEN, slice.length);
 }
 
 void should_take_beyond_length(void) {
     enum { LEN = 4 };
     uint8_t bytes[LEN] = {0, 1, 2, 3};
     struct Slice slice = slice_take_n(slice_create_valid(bytes, LEN), LEN + 1);
-    TEST_ASSERT_EQUAL_PTR(bytes, slice.buf);
-    TEST_ASSERT_EQUAL(LEN, slice.len);
+    TEST_ASSERT_EQUAL_PTR(bytes, slice.buffer);
+    TEST_ASSERT_EQUAL(LEN, slice.length);
 }
 
 void should_reverse(void) {

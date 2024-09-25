@@ -4,16 +4,14 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "slice.h"
+#include "stack.h"
 
-enum { HEAP_DEFAULT_CAPACITY = 4 };
+enum { HEAP_DEFAULT_CAPACITY = STACK_DEFAULT_CAPACITY };
 
 // A min-heap.
 struct Heap {
-    // The underlying buffer.
-    struct Slice buf;
-    // Maximum number of elements for the buffer allocation.
-    size_t cap;
+    // The resizable buffer.
+    struct Stack stack;
 };
 
 // Initializes an empty min-heap without allocating yet.

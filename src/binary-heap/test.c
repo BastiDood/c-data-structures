@@ -8,9 +8,9 @@ void tearDown(void) {}
 
 void should_pop_in_ascending_order_when_pushed_ascending_with_resize(void) {
     struct Heap heap = heap_create_with_capacity(2);
-    TEST_ASSERT_NOT_NULL(heap.buf.buf);
-    TEST_ASSERT_EQUAL(0, heap.buf.len);
-    TEST_ASSERT_EQUAL(2, heap.cap);
+    TEST_ASSERT_NOT_NULL(heap.stack.slice.buffer);
+    TEST_ASSERT_EQUAL(0, heap.stack.slice.length);
+    TEST_ASSERT_EQUAL(2, heap.stack.capacity);
 
     heap_push(&heap, 0);
     heap_push(&heap, 1);
@@ -22,15 +22,15 @@ void should_pop_in_ascending_order_when_pushed_ascending_with_resize(void) {
     TEST_ASSERT_EQUAL_UINT8(2, heap_pop(&heap));
     TEST_ASSERT_EQUAL_UINT8(3, heap_pop(&heap));
 
-    TEST_ASSERT_EQUAL(0, heap.buf.len);
-    TEST_ASSERT_EQUAL(4, heap.cap);
+    TEST_ASSERT_EQUAL(0, heap.stack.slice.length);
+    TEST_ASSERT_EQUAL(4, heap.stack.capacity);
 }
 
 void should_pop_in_ascending_order_when_pushed_descending_with_resize(void) {
     struct Heap heap = heap_create_with_capacity(2);
-    TEST_ASSERT_NOT_NULL(heap.buf.buf);
-    TEST_ASSERT_EQUAL(0, heap.buf.len);
-    TEST_ASSERT_EQUAL(2, heap.cap);
+    TEST_ASSERT_NOT_NULL(heap.stack.slice.buffer);
+    TEST_ASSERT_EQUAL(0, heap.stack.slice.length);
+    TEST_ASSERT_EQUAL(2, heap.stack.capacity);
 
     heap_push(&heap, 3);
     heap_push(&heap, 2);
@@ -42,15 +42,15 @@ void should_pop_in_ascending_order_when_pushed_descending_with_resize(void) {
     TEST_ASSERT_EQUAL_UINT8(2, heap_pop(&heap));
     TEST_ASSERT_EQUAL_UINT8(3, heap_pop(&heap));
 
-    TEST_ASSERT_EQUAL(0, heap.buf.len);
-    TEST_ASSERT_EQUAL(4, heap.cap);
+    TEST_ASSERT_EQUAL(0, heap.stack.slice.length);
+    TEST_ASSERT_EQUAL(4, heap.stack.capacity);
 }
 
 void should_pop_in_ascending_order_when_pushed_random_with_resize(void) {
     struct Heap heap = heap_create_with_capacity(2);
-    TEST_ASSERT_NOT_NULL(heap.buf.buf);
-    TEST_ASSERT_EQUAL(0, heap.buf.len);
-    TEST_ASSERT_EQUAL(2, heap.cap);
+    TEST_ASSERT_NOT_NULL(heap.stack.slice.buffer);
+    TEST_ASSERT_EQUAL(0, heap.stack.slice.length);
+    TEST_ASSERT_EQUAL(2, heap.stack.capacity);
 
     heap_push(&heap, 2);
     heap_push(&heap, 0);
@@ -62,8 +62,8 @@ void should_pop_in_ascending_order_when_pushed_random_with_resize(void) {
     TEST_ASSERT_EQUAL_UINT8(2, heap_pop(&heap));
     TEST_ASSERT_EQUAL_UINT8(3, heap_pop(&heap));
 
-    TEST_ASSERT_EQUAL(0, heap.buf.len);
-    TEST_ASSERT_EQUAL(4, heap.cap);
+    TEST_ASSERT_EQUAL(0, heap.stack.slice.length);
+    TEST_ASSERT_EQUAL(4, heap.stack.capacity);
 }
 
 int main(void) {

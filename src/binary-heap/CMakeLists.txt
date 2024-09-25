@@ -1,5 +1,5 @@
 add_library(${PROJECT_NAME}_BinaryHeap STATIC heap.c)
-target_link_libraries(${PROJECT_NAME}_BinaryHeap ${PROJECT_NAME}_Slice)
+target_link_libraries(${PROJECT_NAME}_BinaryHeap ${PROJECT_NAME}_Slice ${PROJECT_NAME}_Stack)
 target_include_directories(${PROJECT_NAME}_BinaryHeap PUBLIC .)
 
 if(BUILD_TESTING)

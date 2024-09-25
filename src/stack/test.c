@@ -14,19 +14,19 @@ void successful_push_and_pop_without_resize(void) {
     stack_push(&stack, 3);
     stack_push(&stack, 4);
 
-    TEST_ASSERT_EQUAL(stack.buf.len, 4);
-    TEST_ASSERT_EQUAL(stack.cap, 4);
+    TEST_ASSERT_EQUAL(stack.slice.length, 4);
+    TEST_ASSERT_EQUAL(stack.capacity, 4);
 
     TEST_ASSERT_EQUAL_UINT8(4, stack_pop(&stack));
     TEST_ASSERT_EQUAL_UINT8(3, stack_pop(&stack));
     TEST_ASSERT_EQUAL_UINT8(2, stack_pop(&stack));
     TEST_ASSERT_EQUAL_UINT8(1, stack_pop(&stack));
 
-    TEST_ASSERT_EQUAL(stack.buf.len, 0);
-    TEST_ASSERT_EQUAL(stack.cap, 4);
+    TEST_ASSERT_EQUAL(stack.slice.length, 0);
+    TEST_ASSERT_EQUAL(stack.capacity, 4);
 
     stack_free(&stack);
-    TEST_ASSERT_NULL(stack.buf.buf);
+    TEST_ASSERT_NULL(stack.slice.buffer);
 }
 
 void successful_push_and_pop_with_resize(void) {
@@ -35,22 +35,22 @@ void successful_push_and_pop_with_resize(void) {
     stack_push(&stack, 1);
     stack_push(&stack, 2);
 
-    TEST_ASSERT_EQUAL(stack.buf.len, 2);
-    TEST_ASSERT_EQUAL(stack.cap, 2);
+    TEST_ASSERT_EQUAL(stack.slice.length, 2);
+    TEST_ASSERT_EQUAL(stack.capacity, 2);
 
     stack_push(&stack, 1);
     stack_push(&stack, 2);
 
-    TEST_ASSERT_EQUAL(stack.buf.len, 4);
-    TEST_ASSERT_EQUAL(stack.cap, 4);
+    TEST_ASSERT_EQUAL(stack.slice.length, 4);
+    TEST_ASSERT_EQUAL(stack.capacity, 4);
 
     TEST_ASSERT_EQUAL_UINT8(2, stack_pop(&stack));
     TEST_ASSERT_EQUAL_UINT8(1, stack_pop(&stack));
     TEST_ASSERT_EQUAL_UINT8(2, stack_pop(&stack));
     TEST_ASSERT_EQUAL_UINT8(1, stack_pop(&stack));
 
-    TEST_ASSERT_EQUAL(stack.buf.len, 0);
-    TEST_ASSERT_EQUAL(stack.cap, 4);
+    TEST_ASSERT_EQUAL(stack.slice.length, 0);
+    TEST_ASSERT_EQUAL(stack.capacity, 4);
 
     stack_free(&stack);
 }
