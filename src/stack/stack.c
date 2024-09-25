@@ -38,6 +38,13 @@ uint8_t stack_peek(struct Stack const * const self) {
     return slice_get_last(self->buf);
 }
 
+void stack_increase_capacity(struct Stack * const self, const size_t len) {
+    self->cap += len;
+    uint8_t * const buf = realloc(self->buf.buf, self->cap * sizeof *buf);
+    assert(buf != NULL);
+    self->buf.buf = buf;
+}
+
 void stack_push(struct Stack * const self, const uint8_t item) {
     // Ensure that the buffer has been allocated
     if (self->cap == 0) {
@@ -47,12 +54,7 @@ void stack_push(struct Stack * const self, const uint8_t item) {
     }
 
     // Resize if necessary
-    if (self->buf.len >= self->cap) {
-        self->cap *= 2;
-        uint8_t * const buf = realloc(self->buf.buf, self->cap * sizeof *buf);
-        assert(buf != NULL);
-        self->buf.buf = buf;
-    }
+    if (self->buf.len >= self->cap) stack_increase_capacity(self, self->cap);
 
     // Push new item
     self->buf.buf[self->buf.len++] = item;

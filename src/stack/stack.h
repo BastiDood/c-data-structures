@@ -28,6 +28,9 @@ void stack_init_with_capacity(struct Stack * self, size_t cap);
 // Creates a empty heap-allocated stack with the given capacity.
 struct Stack stack_create_with_capacity(size_t cap);
 
+// Increase the capacity of the internal buffer by `len` elements.
+void stack_increase_capacity(struct Stack * self, size_t len);
+
 void stack_free(struct Stack * self);
 
 // Peek at the top of the stack.
