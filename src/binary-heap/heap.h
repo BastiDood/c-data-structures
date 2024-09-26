@@ -6,7 +6,7 @@
 
 #include "stack.h"
 
-enum { HEAP_DEFAULT_CAPACITY = STACK_DEFAULT_CAPACITY };
+#define HEAP_DEFAULT_CAPACITY STACK_DEFAULT_CAPACITY
 
 // A min-heap.
 struct Heap {

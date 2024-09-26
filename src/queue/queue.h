@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-enum { QUEUE_DEFAULT_CAPACITY = 4 };
+#define QUEUE_DEFAULT_CAPACITY 4
 
 // First-in, first-out collection of bytes.
 struct Queue {

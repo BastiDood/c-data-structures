@@ -7,7 +7,7 @@
 
 #include "slice.h"
 
-enum { STACK_DEFAULT_CAPACITY = 4 };
+#define STACK_DEFAULT_CAPACITY 4
 
 // First-in, last-out collection of bytes.
 struct Stack {
