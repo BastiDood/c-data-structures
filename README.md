@@ -5,6 +5,7 @@ This repository contains reference implementations for various basic data struct
 * [Slice](./src/slice/)
 * [Stack](./src/stack/)
 * [Queue](./src/queue/)
+* [AVL Tree](./src/avl-tree/)
 * [Binary Heap](./src/binary-heap/)
 * [Singly-Linked List](./src/singly-linked-list/)
 * [Doubly-Linked List](./src/doubly-linked-list/)
