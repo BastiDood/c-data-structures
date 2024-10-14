@@ -7,6 +7,7 @@ Checks: |
   -bugprone-easily-swappable-parameters,
   -misc-no-recursion,
   -readability-braces-around-statements,
+  -readability-function-cognitive-complexity,
   -readability-isolate-declaration,
   -readability-magic-numbers,
   -readability-identifier-length,
