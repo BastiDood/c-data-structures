@@ -16,7 +16,7 @@ struct Queue queue_create(void) {
     return self;
 }
 
-void queue_init_with_capacity(struct Queue * const self, size_t cap) {
+void queue_init_with_capacity(struct Queue * const self, const size_t cap) {
     uint8_t * const data = malloc(cap * sizeof *data);
     assert(data != NULL);
     self->buf = data;
