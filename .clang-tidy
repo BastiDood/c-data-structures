@@ -5,6 +5,7 @@ Checks: |
   performance-*,
   readability-*,
   -bugprone-easily-swappable-parameters,
+  -misc-no-recursion,
   -readability-braces-around-statements,
   -readability-isolate-declaration,
   -readability-magic-numbers,
