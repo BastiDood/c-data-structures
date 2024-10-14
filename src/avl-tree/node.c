@@ -31,7 +31,7 @@ ptrdiff_t node_balance(const struct Node * const self) {
 void node_recompute_height(struct Node * const self) {
     const ptrdiff_t left = node_height(self->left);
     const ptrdiff_t right = node_height(self->right);
-    self->height = 1 + max(left, right);
+    self->height = 1 + (left < right ? right : left);
 }
 
 struct Node * node_l_rotate(struct Node * const self) {
