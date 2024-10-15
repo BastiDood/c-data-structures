@@ -23,7 +23,9 @@ struct Slice slice_skip_n(struct Slice self, size_t n);
 // Takes up to the first `n` elements in the slice.
 struct Slice slice_take_n(struct Slice self, size_t n);
 
-// Checked version of the subscript operator.
+// Checked version of the subscript operator. Returns `NULL` if not found.
+uint8_t * slice_try_get(struct Slice self, size_t n);
+
 uint8_t slice_get(struct Slice self, size_t n);
 uint8_t slice_get_first(struct Slice self);
 uint8_t slice_get_last(struct Slice self);
