@@ -27,7 +27,7 @@ struct FenwickTree fenwick_create(const struct Slice slice) {
     return self;
 }
 
-void fenwick_add(const struct FenwickTree * const self, size_t n, const size_t value) {
+void fenwick_add(const struct FenwickTree * const self, size_t n, const uint8_t value) {
     assert(n > 0);
     while (n < self->slice.length) {
         uint8_t * const sum = slice_try_get(self->slice, n);

@@ -15,7 +15,7 @@ void fenwick_init(struct FenwickTree * self, struct Slice slice);
 struct FenwickTree fenwick_create(struct Slice slice);
 
 // Adds `value` to the item currently at index `n`.
-void fenwick_add(const struct FenwickTree * self, size_t n, size_t value);
+void fenwick_add(const struct FenwickTree * self, size_t n, uint8_t value);
 
 // Compute the prefix sum up to index `start` (inclusive).
 uint8_t fenwick_prefix_sum(const struct FenwickTree * self, size_t n);
